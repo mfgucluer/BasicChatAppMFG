@@ -6,14 +6,18 @@
 //
 
 import UIKit
-import FirebaseCore
+import FirebaseAuth
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, LoginProtocol, LogoutProtocol, SplashDelegate {
+    
+    
+    
+    
 
     var window: UIWindow?
-    let mainVC = MainTabBarController()
+    let mainTabBarController = MainTabBarController()
     let loginVC = LoginViewController()
-    
+    let splashVC = SplashVC()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -21,11 +25,45 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
+        
+        //Arranging delegates
+        loginVC.loginDelegate = self
+        mainTabBarController.moreVC.delegateLogout = self
+        splashVC.delegate = self
+        self.window?.rootViewController = splashVC
+        self.window?.makeKeyAndVisible()
+
+    }
+    
+    func splashDidFinish() {
+        
+        if Auth.auth().currentUser?.uid == nil {
+            let navigationLoginVC = UINavigationController(rootViewController: loginVC)
+            self.window?.rootViewController = navigationLoginVC
+        }
+        else{
+            self.window?.rootViewController = mainTabBarController
+        }
+   
+    }
+    
+    
+    func loggedIn() {
+        print("Log in")
+        
+        
+    }
+    
+    func logoutPerformed() {
         let navigationLoginVC = UINavigationController(rootViewController: loginVC)
         self.window?.rootViewController = navigationLoginVC
-        self.window?.makeKeyAndVisible()
-        FirebaseApp.configure()
     }
+    
+    
+    
+    
+    
+    
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

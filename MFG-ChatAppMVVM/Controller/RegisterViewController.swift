@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseAuth
+import FirebaseStorage
 
 class RegisterViewController: UIViewController {
     
@@ -99,11 +102,20 @@ class RegisterViewController: UIViewController {
 }
 // MARK: Selector
 extension RegisterViewController {
-    @objc func handleRegisterButton(_ sender: UIButton){
-        guard let emailText = emailTextField.text else{return}
-        guard let nameText = nameTextField.text else{return}
-        guard let usernameText = usernameTextField.text else{return}
-        guard let passwordText = passwordTextField.text else{return}
+    @objc func handleRegisterButton(_ sender: UIButton) {
+        guard let emailText = emailTextField.text else { return }
+        guard let nameText = nameTextField.text else { return }
+        guard let usernameText = usernameTextField.text else { return }
+        guard let passwordText = passwordTextField.text else { return }
+        guard let profileImageUpload = profileImage else { return }
+        let user = AuthenticationServiceUser(emailText: emailText, passwordText: passwordText, nameText: nameText, usernameText: usernameText)
+        
+        AuthenticationService.register(profileImageUpload: profileImageUpload, user: user) { error in
+            if let error = error {
+                print("Error \(error.localizedDescription)")
+                return
+            }
+        }
     }
     
     @objc func handleTextFieldChanged(_ sender: UITextField){

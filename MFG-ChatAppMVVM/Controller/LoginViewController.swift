@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol LoginProtocol{
+    func loggedIn()
+}
+
+
 class LoginViewController: UIViewController {
 
     // MARK: - Properties
+    var loginDelegate: LoginProtocol?
     private var viewModel = LoginViewModel()
     private let logoImageView: UIImageView = {
         let imageView = UIImageView()

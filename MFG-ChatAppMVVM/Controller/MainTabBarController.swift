@@ -9,13 +9,13 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
 
-    let wallVC = WallViewController()
+    let homeVC = HomeViewController()
     let moreVC = MoreViewController()
     
     override func viewWillAppear(_ animated: Bool) {
         view.backgroundColor = .systemBackground
                 
-        let vc1 = UINavigationController(rootViewController: wallVC)
+        let vc1 = UINavigationController(rootViewController: homeVC)
         let vc2 = UINavigationController(rootViewController: moreVC)
         
         
