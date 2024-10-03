@@ -11,18 +11,21 @@ private let reuseId = "MessageCell"
 class ChatVC: UICollectionViewController {
     
     
-    
-    
     //MARK: Properties
     var messages = [Message]()
+    
     private lazy var chatInputView = ChatInputView(frame: .init(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.1))
-    private let user: User
+    var user: User
     
     
     //MARK: Lifecycle
     init(user: User) {
         self.user = user
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
+        guard !user.uuid.isEmpty else {
+            print("Error: User UID is empty!")
+            return
+        }
     }
     
     override func viewDidLoad() {
@@ -101,8 +104,7 @@ extension ChatVC: ChatInputViewProtocol {
                 print("Error: \(error.localizedDescription)")
                 return
             }
-            
-            
+
         }
     }
 }

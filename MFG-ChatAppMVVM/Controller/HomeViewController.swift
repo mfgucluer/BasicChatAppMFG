@@ -82,7 +82,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var chatVC = ChatVC(user: users[indexPath.row])
+        let chatVC = ChatVC(user: users[indexPath.row])
         navigationController?.pushViewController(chatVC, animated: true)
     }
     

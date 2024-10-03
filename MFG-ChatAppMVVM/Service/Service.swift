@@ -23,20 +23,36 @@ struct Service {
     }
     
     static func sendMessage(message: String, toUser: User, completion: @escaping(Error?)->Void ){
-        guard let currentUid = Auth.auth().currentUser?.uid else { return  }
+        guard let currentUid = Auth.auth().currentUser?.uid else {
+            print("Error: current user UID is nil.")
+            return
+        }
+        
+        // UID'leri kontrol et
+        print("Sending message from: \(currentUid) to: \(toUser.uuid)")
+
         let data =  [
             "text": message,
             "fromId": currentUid,
-            "toId": toUser.uid,
+            "toId": toUser.uuid,
             "timeStamp": Timestamp(date: Date()),
         ] as [String: Any]
 
-
-        Firestore.firestore().collection("messages").document(currentUid).collection(toUser.uid).addDocument(data: data) { error in
-            Firestore.firestore().collection("messages").document(toUser.uid).collection(currentUid).addDocument(data: data, completion: completion)
-        }
+        let fromMessagePath = Firestore.firestore().collection("messages").document(currentUid).collection(toUser.uuid)
+        let toMessagePath = Firestore.firestore().collection("messages").document(toUser.uuid).collection(currentUid)
         
+        // Mesaj yükleme işlemi
+        fromMessagePath.addDocument(data: data) { error in
+            if let error = error {
+                print("Error uploading message to sender's path: \(error.localizedDescription)")
+                completion(error)
+                return
+            }
+            
+            toMessagePath.addDocument(data: data, completion: completion)
+        }
     }
+
     
 
     
