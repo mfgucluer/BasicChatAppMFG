@@ -29,7 +29,6 @@ class ChatVC: UICollectionViewController {
         super.viewDidLoad()
         style()
         layout()
-        fetchMessage()
     }
    
     required init?(coder: NSCoder) {
@@ -45,12 +44,7 @@ class ChatVC: UICollectionViewController {
     }
     
     //MARK: API-Serive
-    private func fetchMessage(){
-        Service.fetchMessages(user: user) { messageArray in
-            self.messages = messageArray
-            self.collectionView.reloadData()
-        }
-    }
+  
     
     
 }
