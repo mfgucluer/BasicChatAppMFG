@@ -11,6 +11,7 @@ import Firebase
 import FirebaseStorage
 import FirebaseFirestore
 
+
 struct AuthenticationServiceUser {
     var emailText: String
     var passwordText: String
@@ -18,8 +19,13 @@ struct AuthenticationServiceUser {
     var usernameText: String
 }
 
-
 struct AuthenticationService {
+    
+    static func login(withEmail email: String, password: String, completion: @escaping(AuthDataResult?, Error?)->Void){
+        Auth.auth().signIn(withEmail: email, password: password, completion: completion)
+    }
+    
+    
     static func register(profileImageUpload: UIImage, user: AuthenticationServiceUser, completion: @escaping(Error?)->Void ) {
         
         let photoID = UUID().uuidString
@@ -69,6 +75,7 @@ struct AuthenticationService {
                     ]
                     
                     Firestore.firestore().collection("users").document(userUUID).setData(data, completion: completion) //yukaridaki completion'u buradakine esitleyebiliryouz.
+                    
                 }
             }
         }

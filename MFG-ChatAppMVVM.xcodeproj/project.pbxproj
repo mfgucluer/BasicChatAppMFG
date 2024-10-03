@@ -30,6 +30,15 @@
 		BC2F82BB2C904B30002ACA9C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F82BA2C904B30002ACA9C /* AuthenticationService.swift */; };
 		BC2F82BD2C9050FD002ACA9C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F82BC2C9050FD002ACA9C /* HomeViewController.swift */; };
 		BC2F82BF2C918C89002ACA9C /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F82BE2C918C89002ACA9C /* SplashVC.swift */; };
+		BC2F82C22C92D556002ACA9C /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = BC2F82C12C92D556002ACA9C /* JGProgressHUD */; };
+		BC2F82C62C92F418002ACA9C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F82C52C92F418002ACA9C /* UserCell.swift */; };
+		BC2F82C82C934A97002ACA9C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F82C72C934A96002ACA9C /* User.swift */; };
+		BC2F82CA2C934BCA002ACA9C /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F82C92C934BCA002ACA9C /* Service.swift */; };
+		BCE24D7F2CA96C320013EDCA /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = BCE24D7E2CA96C320013EDCA /* SDWebImage */; };
+		BCE24D832CA971590013EDCA /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE24D822CA971590013EDCA /* ChatVC.swift */; };
+		BCE24D852CA97BAB0013EDCA /* ChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE24D842CA97BAB0013EDCA /* ChatInputView.swift */; };
+		BCE24D892CAC186D0013EDCA /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE24D882CAC186D0013EDCA /* MessageCell.swift */; };
+		BCE24D8B2CAE8AA50013EDCA /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE24D8A2CAE8AA50013EDCA /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +83,13 @@
 		BC2F82BA2C904B30002ACA9C /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		BC2F82BC2C9050FD002ACA9C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BC2F82BE2C918C89002ACA9C /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		BC2F82C52C92F418002ACA9C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		BC2F82C72C934A96002ACA9C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BC2F82C92C934BCA002ACA9C /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		BCE24D822CA971590013EDCA /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		BCE24D842CA97BAB0013EDCA /* ChatInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputView.swift; sourceTree = "<group>"; };
+		BCE24D882CAC186D0013EDCA /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		BCE24D8A2CAE8AA50013EDCA /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,9 +97,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC2F82C22C92D556002ACA9C /* JGProgressHUD in Frameworks */,
 				BC2F82B32C8DBF3A002ACA9C /* FirebaseAuth in Frameworks */,
 				BC2F82B52C8DBF3A002ACA9C /* FirebaseFirestore in Frameworks */,
 				BC2F82B72C8DBF3A002ACA9C /* FirebaseStorage in Frameworks */,
+				BCE24D7F2CA96C320013EDCA /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +195,7 @@
 				BC2F82BC2C9050FD002ACA9C /* HomeViewController.swift */,
 				BC2F82962C89B8F5002ACA9C /* MoreViewController.swift */,
 				BC2F82BE2C918C89002ACA9C /* SplashVC.swift */,
+				BCE24D822CA971590013EDCA /* ChatVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -184,6 +203,8 @@
 		BC2F829C2C89BA8E002ACA9C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BC2F82C72C934A96002ACA9C /* User.swift */,
+				BCE24D8A2CAE8AA50013EDCA /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -193,6 +214,9 @@
 			children = (
 				BC2F82A32C89FC15002ACA9C /* AuthenticationInputView.swift */,
 				BC2F82A52C89FF8C002ACA9C /* CustomTextField.swift */,
+				BC2F82C52C92F418002ACA9C /* UserCell.swift */,
+				BCE24D842CA97BAB0013EDCA /* ChatInputView.swift */,
+				BCE24D882CAC186D0013EDCA /* MessageCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -210,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				BC2F82BA2C904B30002ACA9C /* AuthenticationService.swift */,
+				BC2F82C92C934BCA002ACA9C /* Service.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -242,6 +267,8 @@
 				BC2F82B22C8DBF3A002ACA9C /* FirebaseAuth */,
 				BC2F82B42C8DBF3A002ACA9C /* FirebaseFirestore */,
 				BC2F82B62C8DBF3A002ACA9C /* FirebaseStorage */,
+				BC2F82C12C92D556002ACA9C /* JGProgressHUD */,
+				BCE24D7E2CA96C320013EDCA /* SDWebImage */,
 			);
 			productName = "MFG-ChatAppMVVM";
 			productReference = BC2F82612C886C6C002ACA9C /* MFG-ChatAppMVVM.app */;
@@ -317,6 +344,8 @@
 			mainGroup = BC2F82582C886C6B002ACA9C;
 			packageReferences = (
 				BC2F82B12C8DBF3A002ACA9C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				BC2F82C02C92D556002ACA9C /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
+				BCE24D7D2CA96C320013EDCA /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = BC2F82622C886C6C002ACA9C /* Products */;
 			projectDirPath = "";
@@ -361,19 +390,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCE24D832CA971590013EDCA /* ChatVC.swift in Sources */,
+				BCE24D892CAC186D0013EDCA /* MessageCell.swift in Sources */,
 				BC2F82972C89B8F5002ACA9C /* MoreViewController.swift in Sources */,
 				BC2F82AA2C8C9C4C002ACA9C /* RegisterViewController.swift in Sources */,
 				BC2F82652C886C6C002ACA9C /* AppDelegate.swift in Sources */,
 				BC2F82A42C89FC15002ACA9C /* AuthenticationInputView.swift in Sources */,
+				BCE24D8B2CAE8AA50013EDCA /* Message.swift in Sources */,
+				BC2F82C82C934A97002ACA9C /* User.swift in Sources */,
 				BC2F82952C89B870002ACA9C /* MainTabBarController.swift in Sources */,
 				BC2F82A62C89FF8C002ACA9C /* CustomTextField.swift in Sources */,
 				BC2F82AE2C8D7DCF002ACA9C /* RegisterViewModel.swift in Sources */,
+				BC2F82CA2C934BCA002ACA9C /* Service.swift in Sources */,
 				BC2F82A22C89BD25002ACA9C /* Extension.swift in Sources */,
+				BC2F82C62C92F418002ACA9C /* UserCell.swift in Sources */,
 				BC2F82992C89B9A3002ACA9C /* LoginViewController.swift in Sources */,
 				BC2F82672C886C6C002ACA9C /* SceneDelegate.swift in Sources */,
 				BC2F82BB2C904B30002ACA9C /* AuthenticationService.swift in Sources */,
 				BC2F82BD2C9050FD002ACA9C /* HomeViewController.swift in Sources */,
 				BC2F82A82C8C898B002ACA9C /* LoginViewModel.swift in Sources */,
+				BCE24D852CA97BAB0013EDCA /* ChatInputView.swift in Sources */,
 				BC2F82BF2C918C89002ACA9C /* SplashVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -721,6 +757,22 @@
 				minimumVersion = 11.1.0;
 			};
 		};
+		BC2F82C02C92D556002ACA9C /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
+		BCE24D7D2CA96C320013EDCA /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.19.7;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -738,6 +790,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BC2F82B12C8DBF3A002ACA9C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		BC2F82C12C92D556002ACA9C /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BC2F82C02C92D556002ACA9C /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
+		};
+		BCE24D7E2CA96C320013EDCA /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BCE24D7D2CA96C320013EDCA /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

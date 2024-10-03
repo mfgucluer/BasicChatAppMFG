@@ -8,8 +8,8 @@
 import UIKit
 import FirebaseAuth
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate, LoginProtocol, LogoutProtocol, SplashDelegate {
-    
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, LoginProtocol, LogoutProtocol, SplashDelegate, RegisterProtocol {
+   
     
     
     
@@ -29,6 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, LoginProtocol, LogoutPr
         //Arranging delegates
         loginVC.loginDelegate = self
         mainTabBarController.moreVC.delegateLogout = self
+        loginVC.registerVC.delegateRegister = self
         splashVC.delegate = self
         self.window?.rootViewController = splashVC
         self.window?.makeKeyAndVisible()
@@ -47,11 +48,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, LoginProtocol, LogoutPr
    
     }
     
+    func registered() {
+        print("Registered by MFG")
+        self.window?.rootViewController = mainTabBarController
+    }
+
     
     func loggedIn() {
-        print("Log in")
-        
-        
+        self.window?.rootViewController = mainTabBarController
     }
     
     func logoutPerformed() {

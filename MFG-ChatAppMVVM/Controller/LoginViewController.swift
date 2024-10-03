@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 protocol LoginProtocol{
     func loggedIn()
@@ -14,6 +15,9 @@ protocol LoginProtocol{
 
 class LoginViewController: UIViewController {
 
+    
+    var registerVC = RegisterViewController()
+    
     // MARK: - Properties
     var loginDelegate: LoginProtocol?
     private var viewModel = LoginViewModel()
@@ -56,6 +60,7 @@ class LoginViewController: UIViewController {
         button.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         button.layer.cornerRadius = 20
         button.isEnabled = false //Suanlik bu tiklanamiyor. ViewModel'de yapacagiz bu isi.
+        button.addTarget(self, action: #selector(handleLoginButton), for: .touchUpInside) //Sari uyariyi uygulayinca crash veriyor.
         return button
     }()
     
@@ -85,6 +90,26 @@ class LoginViewController: UIViewController {
 // MARK: Selector
 extension LoginViewController {
     
+    @objc func handleLoginButton(_ sender: UIButton){
+   
+        
+        guard let emailText = emailTextField.text else {return}
+        guard let passwordText = passwordTextField.text else {return}
+        
+        showProgressHud(showProgress: true)
+        AuthenticationService.login(withEmail: emailText, password: passwordText) { result, error in
+            if let error = error {
+                print(error.localizedDescription)
+                self.showProgressHud(showProgress: false)
+                return
+            }
+            self.showProgressHud(showProgress: true)
+            self.loginDelegate?.loggedIn()
+        }
+        
+    }
+    
+    
     @objc func handleTextFieldChanged(_ sender: UITextField){
         if sender == emailTextField{
             viewModel.emailTextField = sender.text
@@ -96,10 +121,9 @@ extension LoginViewController {
     }
     
     @objc private func handleGotoRegisterPage(_ sender: UIButton){
-        let controller = RegisterViewController()
-        self.navigationController?.pushViewController(controller, animated: true)
+        
+        self.navigationController?.pushViewController(registerVC, animated: true)
     }
-    
     
 }
 

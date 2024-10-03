@@ -10,9 +10,17 @@ import FirebaseFirestore
 import FirebaseAuth
 import FirebaseStorage
 
+
+protocol RegisterProtocol {
+    func registered()
+}
+
+
+
 class RegisterViewController: UIViewController {
     
     // MARK: - Properties
+    var delegateRegister: RegisterProtocol?
     private var profileImage: UIImage?
     private var viewModel = RegisterViewModel()
     private lazy var addCameraButton: UIButton = {
@@ -91,7 +99,6 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureGradientLayer()
         style()
         layout()
     }
@@ -109,12 +116,15 @@ extension RegisterViewController {
         guard let passwordText = passwordTextField.text else { return }
         guard let profileImageUpload = profileImage else { return }
         let user = AuthenticationServiceUser(emailText: emailText, passwordText: passwordText, nameText: nameText, usernameText: usernameText)
-        
+        showProgressHud(showProgress: true)
         AuthenticationService.register(profileImageUpload: profileImageUpload, user: user) { error in
             if let error = error {
                 print("Error \(error.localizedDescription)")
+                self.showProgressHud(showProgress: false)
                 return
             }
+            self.showProgressHud(showProgress: false)
+            self.delegateRegister?.registered()
         }
     }
     
@@ -147,6 +157,13 @@ extension RegisterViewController {
         self.present(picker, animated: true)
     }
     
+    @objc func slideKeyboardUp(){
+        self.view.frame.origin.y = -110
+        
+    }
+    @objc func slideKeyboardDown(){
+        self.view.frame.origin.y = 0
+    }
 }
 
 // MARK: - Helpers
@@ -163,8 +180,15 @@ extension RegisterViewController {
         }
     }
     
+    private func slideKeyboardUpNotifications(){
+        NotificationCenter.default.addObserver(self, selector: #selector(slideKeyboardUp), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(slideKeyboardDown), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     
     private func style(){
+        configureGradientLayer()
+        slideKeyboardUpNotifications()
         //addCameraButton
         addCameraButton.translatesAutoresizingMaskIntoConstraints = false
         //stackView
