@@ -54,6 +54,19 @@ struct Service {
     }
 
     
+    static func fetchMessages(user: User,completion:@escaping([Message])-> Void) {
+            var messages = [Message]()
+            guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        Firestore.firestore().collection("messages").document(currentUid).collection(user.uuid).order(by: "timeStamp").addSnapshotListener { snapshot, error in
+                snapshot?.documentChanges.forEach({ value in
+                    if value.type == .added{
+                        let data = value.document.data()
+                        messages.append(Message(data: data))
+                        completion(messages)
+                    }
+                })
+            }
+        }
 
     
     

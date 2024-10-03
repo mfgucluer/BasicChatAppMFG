@@ -39,6 +39,7 @@
 		BCE24D852CA97BAB0013EDCA /* ChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE24D842CA97BAB0013EDCA /* ChatInputView.swift */; };
 		BCE24D892CAC186D0013EDCA /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE24D882CAC186D0013EDCA /* MessageCell.swift */; };
 		BCE24D8B2CAE8AA50013EDCA /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE24D8A2CAE8AA50013EDCA /* Message.swift */; };
+		BCE24D8D2CAEAFF40013EDCA /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE24D8C2CAEAFF40013EDCA /* MessageViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		BCE24D842CA97BAB0013EDCA /* ChatInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputView.swift; sourceTree = "<group>"; };
 		BCE24D882CAC186D0013EDCA /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		BCE24D8A2CAE8AA50013EDCA /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		BCE24D8C2CAEAFF40013EDCA /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 			children = (
 				BC2F82A72C8C898B002ACA9C /* LoginViewModel.swift */,
 				BC2F82AD2C8D7DCF002ACA9C /* RegisterViewModel.swift */,
+				BCE24D8C2CAEAFF40013EDCA /* MessageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCE24D8D2CAEAFF40013EDCA /* MessageViewModel.swift in Sources */,
 				BCE24D832CA971590013EDCA /* ChatVC.swift in Sources */,
 				BCE24D892CAC186D0013EDCA /* MessageCell.swift in Sources */,
 				BC2F82972C89B8F5002ACA9C /* MoreViewController.swift in Sources */,

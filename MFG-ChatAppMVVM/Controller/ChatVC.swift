@@ -30,8 +30,10 @@ class ChatVC: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchMessage()
         style()
         layout()
+        
     }
    
     required init?(coder: NSCoder) {
@@ -47,7 +49,12 @@ class ChatVC: UICollectionViewController {
     }
     
     //MARK: API-Serive
-  
+    private func fetchMessage(){
+        Service.fetchMessages(user: user) { messageArray in
+            self.messages = messageArray
+            self.collectionView.reloadData()
+        }
+    }
     
     
 }
@@ -62,10 +69,7 @@ extension ChatVC {
     private func layout(){
         
     }
-    
-    
-    
-    
+
 }
 
 
@@ -74,11 +78,13 @@ extension ChatVC {
 
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return self.messages.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId, for: indexPath) as! MessageCell
+        cell.message = messages[indexPath.row]
+        cell.message?.user = user
         return cell
     }
 }
